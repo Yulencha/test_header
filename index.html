@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/scripts.js" defer></script>
+    <!--defer - запускает код в js после прогрузки всей страницы-->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>
+      НИУ МЭИ, Национальный исследовательский университет "МЭИ". Поступление,
+      проходные баллы, стоимость обучения 2022 - официальный сайт Studika.ru
+    </title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="topHeader flex-row-center">
+        <!-- невидимка для красивого расположения -->
+        <div class="menu hide">
+          <img src="./images/menu.svg" alt="Меню" />
+        </div>
+        <div class="flex-row-center">
+          <img src="./images/logo.svg" class="logo" alt="Логотип" />
+
+          <div
+            tabindex="1"
+            class="pc-city-container mob-display-none"
+            data-city-path=""
+          >
+            <div tabindex="2" class="checkCity flex-row-center">
+              <input
+                type="image"
+                src="./images/city.svg"
+                alt="Выбор города"
+                class="city"
+              />
+              <span>Любой регион</span>
+            </div>
+          </div>
+          <div class="pc-city-block mob-display-none" id="pc-header-region">
+            <div class="city-search-block">
+              <input
+                class="city-search"
+                autocomplete="none"
+                onfocus="this.setAttribute('autocomplete', 'none');"
+                type="text"
+                placeholder="Регион, город, населенный пункт"
+              /><svg
+                class="city-search-clear"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z"
+                  fill="#A7A7A7"
+                ></path>
+              </svg>
+            </div>
+            <div class="city-selected">
+              <div class="city-select" data-id="15" data-type="city">
+                Барнаул<svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z"
+                    fill="#A7A7A7"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div class="all-city-container ps ps--active-y">
+              <div class="all-city-loaded" style="opacity: 1">
+                <div class="city-item" data-id="all" data-type="country">
+                  <span class="city-name">Россия</span>
+                </div>
+                <div class="city-item" data-id="24" data-type="area">
+                  <span class="city-name">Алтайский край</span>
+                </div>
+                <div class="city-item active" data-id="15" data-type="city">
+                  <span class="city-name">Барнаул</span
+                  ><span class="city-state">Алтайский край</span>
+                </div>
+                <div class="city-item" data-id="16" data-type="city">
+                  <span class="city-name">Бийск</span
+                  ><span class="city-state">Алтайский край</span>
+                </div>
+              </div>
+              <div class="apply-city-container">
+                <button class="btn save-city" type="button">Сохранить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="search flex-row-center mob-display-none">
+          <img src="./images/search.svg" class="loupe" alt="Лупа" />
+          <input
+            type="text"
+            class="searchText"
+            placeholder="Учебное заведение, специальность или профессия"
+            autocomplete="off"
+          />
+        </div>
+        <div class="userBox flex-row-center">
+          <div class="like flex-row-center">
+            <img src="./images/like.svg" alt="Сердечко" />
+            <span>1</span>
+          </div>
+          <div class="user flex-row-center mob-display-none">
+            <span class="text-gray-hover">Екатерина</span>
+            <img src="./images/avatar.svg" alt="Аватар" />
+          </div>
+        </div>
+      </div>
+      <div class="buttomHeader mob-display-none">
+        <ul class="topmenu">
+          <li><a class="topmenuA" href="https://studika.ru/vuzy">Вузы</a></li>
+          <li>
+            <a class="topmenuA" href="https://studika.ru/kolledzhi">Колледжи</a>
+          </li>
+          <li>
+            <a class="topmenuA" href="https://studika.ru/tehnikumy"
+              >Техникумы
+            </a>
+          </li>
+          <li>
+            <a class="topmenuA" href="https://studika.ru/uchilischa">Училища</a>
+          </li>
+          <li>
+            <a class="topmenuA" href="https://studika.ru/specialnosti"
+              >Специальности
+            </a>
+            <div class="submenuBox">
+              <ul class="submenu">
+                <li>
+                  <a
+                    class="submenuA"
+                    href="https://studika.ru/specialnosti/vyssee"
+                    >Высшее
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="submenuA"
+                    href="https://studika.ru/specialnosti/srednee"
+                    >Среднее
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="topmenuA" href="https://studika.ru/professii"
+              >Профессии
+            </a>
+          </li>
+          <li>
+            <a class="topmenuA" href="https://studika.ru/otzyvi">Отзывы</a>
+          </li>
+          <li>
+            <a class="topmenuA" href="https://studika.ru/"
+              >Учебным заведениям
+            </a>
+          </li>
+          <li>
+            <a
+              class="topmenuA"
+              href="https://studika.ru/proforientacija-test/test"
+              >Тест на профориентацию
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mMenuBox">
+      <input type="checkbox" id="nav-toggle" hidden />
+      <nav class="nav">
+        <label for="nav-toggle" class="nav-toggle" onclick></label>
+        <div class="mMenu">
+          <div class="m-user">
+            <img src="./images/avatar-auto.svg" alt="Аватар" />
+            <span class="m-user-name text-gray-hover">Екатерина</span>
+            <span class="m-user-email">user@gmail.com</span>
+          </div>
+          <div class="m-city-box">
+            <div class="m-city">
+              <div class="m-city-label">Город или регион</div>
+              <div class="m-city-name">Любой регион</div>
+            </div>
+            <input
+              type="image"
+              src="./images/city.svg"
+              alt="Выбор города"
+              class="city"
+            />
+          </div>
+
+          <input
+            id="item-1"
+            type="radio"
+            name="radio"
+            value="high-ed"
+            checked
+          />
+          <input id="item-2" type="radio" name="radio" value="middle-ed" />
+          <div class="m-top-menu">
+            <label id="it-1" for="item-1">ВЫСШЕЕ</label>
+
+            <label id="it-2" for="item-2">СРЕДНЕЕ</label>
+          </div>
+
+          <div class="mMiddleMenu">
+            <div class="menuHightEd">
+              <ul>
+                <li><a href="https://studika.ru/vuzy">Вузы</a></li>
+                <li>
+                  <a href="https://studika.ru/specialnosti/vyssee"
+                    >Специальности</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="menuMiddleEd">
+              <ul>
+                <li><a href="https://studika.ru/kolledzhi">Колледжи</a></li>
+                <li><a href="https://studika.ru/tehnikumy">Техникумы</a></li>
+                <li><a href="https://studika.ru/uchilischa">Училища</a></li>
+                <li>
+                  <a href="https://studika.ru/specialnosti/srednee"
+                    >Специальности</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mBottomMenu">
+            <ul>
+              <li><a href="https://studika.ru/professii">Профессии</a></li>
+              <li><a href="https://studika.ru/otzyvi">Отзывы студентов</a></li>
+              <li><a href="https://studika.ru/reklama">Реклама на сайте</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="mask-content"></div>
+    </div>
+  </body>
+</html>

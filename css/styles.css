@@ -1,0 +1,699 @@
+:root {
+  --Rpadd: 50px;
+  --Lpadd: 50px;
+  --bs-dark: #222222; /* основной текст */
+  --bs-white: #ffffff; /* белый на сером */
+  --bs-light: #f1f1f1; /* серый на белом */
+  --bs-gray-light: #e6e6e6; /* подложка элемента */
+
+  --bs-gray-dark: #767676; /* дескриптор */
+  --bs-gray: #a7a7a7; /* иконка */
+  --bs-gray-light: #d8d8d8; /* обводка */
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: local("OpenSans"), url("../fonts/OpenSans/OpenSans.ttf");
+}
+/* Medium */
+
+@font-face {
+  font-family: "Formular";
+  src: local("Formular"),
+    url("../fonts/Formular/Formular-Medium.ttf") format("truetype"),
+    url("../fonts/Formular/Formular-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/Formular/Formular-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Bold */
+
+@font-face {
+  font-family: "Formular";
+  src: local("Formular"),
+    url("../fonts/Formular/Formular-Bold.ttf") format("truetype"),
+    url("../fonts/Formular/Formular-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/Formular/Formular-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+.flex-row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  font-family: "OpenSans";
+  background: var(--bs-light);
+}
+
+.header {
+  height: 136px;
+  width: 100%;
+  background: var(--bs-white);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style: none; /*убираем маркеры списка*/
+  margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
+  padding-left: 0; /*убираем левый отступ, равный 40px*/
+}
+
+a {
+  text-decoration: none; /*убираем подчеркивание текста ссылок*/
+  pointer-events: none; /*!!!!!!!!!!!отключила ссылки на время разработки*/
+}
+
+.text-gray-hover:hover {
+  color: var(--bs-gray-dark);
+}
+
+/* Desktop  ----------- */
+/* @media only screen and ((min-width: 1350px)) {
+} */
+@media only screen and ((min-width: 1082px)) {
+  .menu {
+    display: none;
+  }
+  .topHeader {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    justify-content: space-between;
+    white-space: nowrap;
+  }
+
+  .header {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .topmenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .buttomHeader {
+    padding-bottom: 16px;
+  }
+
+  .city {
+    margin-right: 8px;
+    margin-left: 16px;
+  }
+
+  .search {
+    height: 48px;
+    width: 592px;
+    gap: 8px;
+    background: var(--bs-light);
+    border-radius: 100px;
+    margin: 0 12px;
+    flex: 0 0 auto;
+    width: 50%;
+  }
+
+  .searchText {
+    border: none;
+    background: var(--bs-light);
+    width: 536px;
+    height: 22px;
+  }
+
+  .like {
+    margin-right: 30.5px;
+  }
+  .like span {
+    margin-right: 10.5px;
+  }
+  .like:hover {
+    background: #f1f1f1;
+    border-radius: 37px;
+  }
+  .user span {
+    margin-right: 7px;
+  }
+
+  a {
+    color: var(--bs-dark);
+    padding: 2px 10px;
+    gap: 10px;
+  }
+
+  .submenuBox {
+    position: absolute;
+    padding: 9px 0 0;
+    min-width: 200px;
+  }
+  ul.submenu {
+    background: #fbfbfb;
+    box-shadow: 0 6px 38px rgb(44 62 106 / 10%);
+    border-radius: 10px;
+    padding: 8px 0;
+    margin: 0;
+  }
+  .submenu {
+    visibility: hidden;
+    width: 100%;
+  }
+
+  ul.submenu li a {
+    padding: 6px 14px;
+    display: block;
+  }
+
+  li:hover a.topmenuA {
+    background: var(--bs-light);
+    border-radius: 34px;
+  }
+
+  li:hover .submenu {
+    visibility: visible;
+  }
+
+  .header {
+    padding: 0 var(--Rpadd) 0px var(--Lpadd);
+  }
+
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  /* Не работает через запятую, потому так */
+  ::-moz-placeholder {
+    text-align: center;
+  }
+
+  .searchText:active,
+  :hover,
+  :focus {
+    outline: 0;
+    outline-offset: 0;
+  }
+
+  .loupe {
+    position: relative;
+    left: 8px;
+
+    border-radius: 0px;
+  }
+
+  .mMenuBox {
+    display: none;
+  }
+
+  .checkCity span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .pc-city-block {
+    position: absolute;
+    background: #fbfbfb;
+    box-shadow: 0 7px 38px rgb(44 62 106 / 25%);
+    border-radius: 10px;
+    z-index: 10;
+    top: 64px;
+    left: calc(var(--Lpadd) + 16px + 88px);
+    margin-top: 16px;
+    width: 384px;
+    height: 416px;
+    padding: 24px 0 0;
+    /* visibility: hidden; */
+    display: none;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+  }
+  /* .pc-city-container:active ~ .pc-city-block {
+    display: block;
+  } */
+  /* .pc-city-container:focus ~ .pc-city-block {
+    display: block;
+  } */
+
+  .pc-city-container:focus ~ .pc-city-block,
+  .pc-city-container:active ~ .pc-city-block,
+  .pc-city-block:hover {
+    display: block;
+  }
+
+  /* .pc-city-container:checked ~ .pc-city-block {
+    display: block;
+  } */
+  .city-search-block {
+    position: relative;
+    margin: 0 16px;
+  }
+  .city-search {
+    border-radius: 100px;
+    height: 48px;
+    font-size: 14px;
+    width: 100%;
+    padding: 0 40px 0 25px;
+    border: 2px solid #abc8ea;
+    box-sizing: border-box;
+  }
+  .city-search-clear {
+    /* display: none; */
+    position: absolute;
+    top: 50%;
+    right: 17px;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+  .city-selected {
+    border-bottom: 1px solid #d8d8d8;
+    padding: 12px 16px;
+  }
+  .city-select {
+    background: #0656b4;
+    border-radius: 49px;
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    padding: 9px 35px 9px 17px;
+    line-height: 22px;
+    margin: 4px 8px 4px 0;
+    position: relative;
+  }
+  .all-city-container {
+    max-height: 200px;
+    position: relative;
+    margin-top: 10px;
+  }
+
+  .city-item {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 11px 16px;
+  }
+
+  .city-state {
+    font-size: 12px;
+    line-height: 20px;
+    color: #767676;
+    display: block;
+  }
+  .city-select svg {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .city-search-clear {
+    /* display: none; */
+    position: absolute;
+    top: 50%;
+    right: 17px;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+  .save-city {
+    font-family: Formular;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    width: 100%;
+    padding: 16px 0;
+    background: #0656b4;
+    border: 0;
+    border-radius: 0 0 10px 10px;
+    margin-top: 20px;
+  }
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .pc-change-city {
+    min-width: 0;
+    border-radius: 37px;
+  }
+
+  .align-items-center {
+    align-items: center !important;
+  }
+  .justify-content-center {
+    justify-content: center !important;
+  }
+  .d-flex {
+    display: flex !important;
+  }
+}
+
+/* Mobile  ----------- */
+@media only screen and (max-width: 1081.999px) {
+  .mMenuBox {
+    display: block;
+  }
+
+  .header {
+    padding: 0 8px 0px 14px;
+    height: 64px;
+  }
+
+  .topHeader {
+    height: 100%;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  .mob-display-none {
+    display: none;
+  }
+
+  .mMenu {
+    background: var(--bs-white);
+    width: 290px;
+    height: 100vh;
+  }
+
+  .m-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px 16px;
+  }
+
+  .m-user img {
+    width: 104px;
+    height: 104px;
+    margin-top: 8px;
+  }
+  .m-user .m-user-name {
+    font-family: Formular;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: 8px;
+  }
+  .m-user .m-user-email {
+    color: var(--bs-gray-dark);
+    margin-top: 3px;
+  }
+
+  .m-user:hover span {
+    color: var(--bs-gray-dark);
+  }
+
+  .m-city-box {
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+    margin: 0 16px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .m-city-label {
+    color: #767676;
+    font-size: 12px;
+  }
+
+  .m-top-menu li {
+    font-family: "Formular";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 2px;
+    color: var(--bs-dark);
+  }
+
+  .m-top-menu {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    width: 290px;
+    justify-content: space-around;
+    border-bottom: 1px solid #d8d8d8;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  .m-top-menu label {
+    display: inline-block;
+    padding-bottom: 12px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    color: #767676;
+    font-family: Formular;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 2px;
+  }
+
+  .menuHightEd,
+  .menuMiddleEd {
+    display: none;
+    /* padding-left: 24px;
+    padding-right: 24px; */
+  }
+  .menuMiddleEd ul li,
+  .menuHightEd ul li {
+    font-size: 15px;
+    padding: 10px 24px;
+  }
+  /* Checked */
+
+  #item-1:checked ~ .m-top-menu #it-1,
+  #item-2:checked ~ .m-top-menu #it-2 {
+    color: #222;
+    border-bottom: 3px solid #0656b4;
+  }
+
+  #item-1:checked ~ .mMiddleMenu .menuHightEd,
+  #item-2:checked ~ .mMiddleMenu .menuMiddleEd {
+    display: block;
+  }
+
+  .menuMiddleEd ul li:hover a {
+    color: var(--bs-gray-dark);
+  }
+
+  .menuHightEd ul li:hover a {
+    color: var(--bs-gray-dark);
+  }
+
+  .mMiddleMenu a {
+    color: var(--bs-dark);
+  }
+  .mBottomMenu ul li a {
+    color: var(--bs-gray-dark);
+    font-size: 12px;
+    margin: 20px 0;
+  }
+  .mBottomMenu ul li {
+    margin: 20px 24px;
+  }
+
+  .menuHightEd,
+  .menuMiddleEd {
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+
+  .nav {
+    /*  ширна произвольная, не стесняйтесь экспериментировать */
+    width: 290px;
+    min-width: 290px;
+    /* фиксируем и выставляем высоту панели на максимум */
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    /* сдвигаем (прячем) панель относительно левого края страницы */
+    left: -320px;
+    /* внутренние отступы */
+    /* padding: 24px 20px; */
+    /* плавный переход смещения панели */
+    -webkit-transition: left 0.3s;
+    -moz-transition: left 0.3s;
+    transition: left 0.3s;
+    /* определяем цвет фона панели */
+    background: var(--bs-white);
+    /* поверх других элементов */
+    z-index: 2000;
+    border-radius: 0 10px 10px 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  /**
+ * Кнопка переключения панели
+ * тег <label>
+ */
+
+  .nav-toggle {
+    /* абсолютно позиционируем */
+    position: absolute;
+    /* относительно левого края панели */
+    left: 320px;
+    /* отступ от верхнего края панели */
+    top: 1em;
+    /* внутренние отступы */
+    padding: 0.5em;
+    /* определяем цвет фона переключателя
+     * чаще вчего в соответствии с цветом фона панели
+    */
+    background: inherit;
+    /* цвет текста */
+    color: var(--bs-dark);
+    /* вид курсора */
+    cursor: pointer;
+    /* размер шрифта */
+    font-size: 1.2em;
+    line-height: 1;
+    /* всегда поверх других элементов страницы */
+    z-index: 2001;
+    /* анимируем цвет текста при наведении */
+    -webkit-transition: color 0.25s ease-in-out;
+    -moz-transition: color 0.25s ease-in-out;
+    transition: color 0.25s ease-in-out;
+  }
+
+  /* определяем текст кнопки 
+ * символ Unicode (TRIGRAM FOR HEAVEN)
+*/
+
+  .nav-toggle:after {
+    content: "\2630";
+    text-decoration: none;
+  }
+
+  /* цвет текста при наведении */
+
+  /* .nav-toggle:hover {
+  color: red;
+} */
+
+  /**
+ * Скрытый чекбокс (флажок)
+ * невидим и недоступен :)
+ * имя селектора атрибут флажка
+ */
+
+  [id="nav-toggle"] {
+    position: absolute;
+    display: none;
+  }
+
+  /**
+ * изменение положения переключателя 
+ * при просмотре на мобильных устройствах
+ * когда навигация раскрыта, распологаем внутри панели
+*/
+
+  [id="nav-toggle"]:checked ~ .nav > .nav-toggle {
+    left: auto;
+    right: 10px;
+    top: 10px;
+  }
+
+  /**
+ * Когда флажок установлен, открывается панель
+ * используем псевдокласс:checked
+ */
+
+  [id="nav-toggle"]:checked ~ .nav {
+    left: 0;
+    box-shadow: 4px 0px 20px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 4px 0px 20px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 4px 0px 20px 0px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+  }
+
+  /* 
+ * смещение контента страницы
+ * на размер ширины панели,
+ * фишка необязательная, на любителя
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+
+  [id="nav-toggle"]:checked ~ main > article {
+    -webkit-transform: translateX(320px);
+    -moz-transform: translateX(320px);
+    transform: translateX(320px);
+  }
+
+  /*
+ * изменение символа переключателя,
+ * привычный крестик (MULTIPLICATION X), 
+ * вы можете испльзовать любой другой значок
+*/
+
+  [id="nav-toggle"]:checked ~ .nav > .nav-toggle:after {
+    content: "\2715";
+  }
+
+  /**
+ * профиксим баг в Android <= 4.1.2
+ * см: http://timpietrusky.com/advanced-checkbox-hack
+ */
+
+  /* body {
+    -webkit-animation: bugfix infinite 1s;
+  }
+
+  @-webkit-keyframes bugfix {
+    to {
+      padding: 0;
+    }
+  }
+  } */
+
+  .mask-content {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  [id="nav-toggle"]:checked ~ .mask-content {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: opacity 0.5s, visibility 0.5s;
+    transition: opacity 0.5s, visibility 0.5s;
+  }
+
+  /* блок есть, но прозрачный */
+  .menu {
+    display: block;
+    opacity: 0;
+  }
+}
