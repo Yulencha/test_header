@@ -77,6 +77,29 @@ a {
   color: var(--bs-gray-dark);
 }
 
+/* .custom-scrollbars * {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-width: thin;
+  scrollbar-color: #999 #eee;
+} */
+
+/* W3C standard
+   сейчас только для Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bs-gray-light);
+}
+/* для Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--bs-gray-light);
+  border-radius: 45px;
+  height: 60px;
+}
+
 /* Desktop  ----------- */
 /* @media only screen and ((min-width: 1350px)) {
 } */
@@ -209,7 +232,7 @@ a {
     display: none;
   }
 
-  .checkCity span {
+  .check-city span {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
@@ -224,13 +247,25 @@ a {
     left: calc(var(--Lpadd) + 16px + 88px);
     margin-top: 16px;
     width: 384px;
-    height: 416px;
+
     padding: 24px 0 0;
-    /* visibility: hidden; */
-    display: none;
+    visibility: hidden;
+    /* display: none; */
     animation-fill-mode: forwards;
     overflow: hidden;
   }
+
+  .pc-city-container {
+    cursor: pointer;
+  }
+
+  .pc-city-container:hover div input {
+    width: 32px;
+    height: 32px;
+    background: var(--bs-light);
+    border-radius: 50%;
+  }
+
   /* .pc-city-container:active ~ .pc-city-block {
     display: block;
   } */
@@ -238,11 +273,11 @@ a {
     display: block;
   } */
 
-  .pc-city-container:focus ~ .pc-city-block,
+  /* .pc-city-container:focus ~ .pc-city-block,
   .pc-city-container:active ~ .pc-city-block,
   .pc-city-block:hover {
     display: block;
-  }
+  } */
 
   /* .pc-city-container:checked ~ .pc-city-block {
     display: block;
@@ -285,11 +320,14 @@ a {
     position: relative;
   }
   .all-city-container {
-    max-height: 200px;
     position: relative;
     margin-top: 10px;
+    z-index: 15;
   }
-
+  .all-city-loaded {
+    max-height: 200px;
+    overflow-y: scroll;
+  }
   .city-item {
     font-size: 14px;
     line-height: 22px;
@@ -696,4 +734,9 @@ a {
     display: block;
     opacity: 0;
   }
+}
+
+.visible {
+  /* display: block; */
+  visibility: visible;
 }

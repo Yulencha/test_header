@@ -21,27 +21,21 @@
         <div class="flex-row-center">
           <img src="./images/logo.svg" class="logo" alt="Логотип" />
 
-          <div
-            tabindex="1"
-            class="pc-city-container mob-display-none"
-            data-city-path=""
-          >
-            <div tabindex="2" class="checkCity flex-row-center">
+          <div class="pc-city-container mob-display-none" data-city-path="">
+            <div class="check-city flex-row-center">
               <input
                 type="image"
                 src="./images/city.svg"
                 alt="Выбор города"
                 class="city"
               />
-              <span>Любой регион</span>
+              <span class="city-name-header">Любой регион</span>
             </div>
           </div>
           <div class="pc-city-block mob-display-none" id="pc-header-region">
             <div class="city-search-block">
               <input
                 class="city-search"
-                autocomplete="none"
-                onfocus="this.setAttribute('autocomplete', 'none');"
                 type="text"
                 placeholder="Регион, город, населенный пункт"
               /><svg
@@ -74,9 +68,10 @@
                 </svg>
               </div>
             </div>
-            <div class="all-city-container ps ps--active-y">
+            <div class="all-city-container">
               <div class="all-city-loaded" style="opacity: 1">
-                <div class="city-item" data-id="all" data-type="country">
+                <!-- ДОЛЖНО БЫТЬ ТУТ -->
+                <!-- <div class="city-item" data-id="all" data-type="country">
                   <span class="city-name">Россия</span>
                 </div>
                 <div class="city-item" data-id="24" data-type="area">
@@ -89,7 +84,7 @@
                 <div class="city-item" data-id="16" data-type="city">
                   <span class="city-name">Бийск</span
                   ><span class="city-state">Алтайский край</span>
-                </div>
+                </div> -->
               </div>
               <div class="apply-city-container">
                 <button class="btn save-city" type="button">Сохранить</button>
