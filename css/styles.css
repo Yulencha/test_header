@@ -232,11 +232,6 @@ a {
     display: none;
   }
 
-  .check-city span {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
   .pc-city-block {
     position: absolute;
     background: #fbfbfb;
@@ -264,6 +259,12 @@ a {
     height: 32px;
     background: var(--bs-light);
     border-radius: 50%;
+  }
+
+  .city-name-header {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 15vw;
   }
 
   /* .pc-city-container:active ~ .pc-city-block {
@@ -350,14 +351,12 @@ a {
     color: #767676;
     display: block;
   }
-  .city-select svg {
+  .city-select img {
     position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    width: 14px;
-    height: 14px;
   }
   .city-search-clear {
     /* display: none; */

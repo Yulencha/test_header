@@ -44,8 +44,8 @@ function createCityNode(cityName, areaName, type, id) {
   return div;
 }
 
-function addNodeToDOM(element) {
-  let parentNode = document.querySelector(".all-city-loaded");
+function addNodeToDOM(element, className) {
+  let parentNode = document.querySelector(className);
   parentNode.append(element);
 }
 
@@ -56,7 +56,7 @@ function getListCity(arr) {
     let id = element.id;
     let cities = element.cities;
 
-    addNodeToDOM(createAreaNode(areaName, type, id));
+    addNodeToDOM(createAreaNode(areaName, type, id), ".all-city-loaded");
 
     if (Array.isArray(cities)) {
       cities.forEach((city) => {
@@ -64,7 +64,10 @@ function getListCity(arr) {
         let type = "city";
         let id = city.id;
 
-        addNodeToDOM(createCityNode(cityName, areaName, type, id));
+        addNodeToDOM(
+          createCityNode(cityName, areaName, type, id),
+          ".all-city-loaded"
+        );
       });
     }
   });
@@ -74,15 +77,20 @@ let btnCityCont = document.querySelector(".pc-city-container");
 let cityBlock = document.querySelector(".pc-city-block");
 let citySelect = document.querySelector(".city-selected");
 let allCity = document.querySelector(".all-city-loaded");
-// let cityDelete = document.querySelector(".city-selected svg");
 let btnSaveCity = document.querySelector(".btn-save-city");
+let cityNameHeader = document.querySelector(".city-name-header");
 
 btnCityCont.addEventListener("click", function () {
   cityBlock.classList.toggle("visible");
 });
 
 window.onclick = function (event) {
-  if (!event.target.className.includes("city")) {
+  if (event.target.className.includes("do-not-close-city-menu")) {
+    return;
+  } else if (
+    !cityBlock.contains(event.target) &&
+    !btnCityCont.contains(event.target)
+  ) {
     cityBlock.classList.remove("visible");
   }
 };
@@ -106,13 +114,62 @@ allCity.addEventListener("click", function (event) {
     div.className = "city-select";
     div.dataset.id = element.dataset.id;
     div.dataset.type = element.dataset.type;
-
-    div.innerHTML =
-      element.firstChild.innerText +
-      '<svg><path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="#FFFFFF"></path></svg>';
-
+    let divBtn = document.createElement("div");
+    divBtn.className = "do-not-close-city-menu";
+    divBtn.innerHTML =
+      '<img src="./images/close.svg" class="do-not-close-city-menu" alt="X" />';
+    divBtn.onclick = deleteCitySelected;
+    div.innerHTML = element.firstChild.innerText;
+    div.appendChild(divBtn);
     citySelect.appendChild(div);
   }
 
   element.classList.toggle("active");
 });
+
+function deleteCitySelected(event) {
+  let divSel = event.target.parentNode.parentNode;
+
+  let divLoad = allCity.querySelector(`[data-id = '${divSel.dataset.id}']`);
+
+  divLoad.classList.remove("active");
+  divSel.remove();
+}
+
+btnSaveCity.addEventListener("click", function () {
+  let arraySpanCity = [];
+  let arrayCity = citySelect.querySelectorAll(".city-select");
+  arrayCity.forEach((element) => {
+    let cityName = element.textContent;
+    arraySpanCity.push(cityName);
+  });
+  if (arraySpanCity.length == 0) {
+    cityNameHeader.textContent = "Любой регион";
+  } else {
+    cityNameHeader.textContent = arraySpanCity.join(", ");
+  }
+  //  console.log(arraySpanCity);
+});
+
+{
+  /* 
+<div class="city-select" data-id="24" data-type="area">
+  Алтайский край
+  <div class="do-not-close-city-menu">
+    <img src="./images/close.svg" class="do-not-close-city-menu" alt="X">
+  </div>
+</div>
+
+  <span data-type="area" data-id="24">
+    Алтайский край
+  </span> 
+*/
+}
+
+function createCitySpan(cityName, type, id) {
+  let span = document.createElement("span");
+  span.dataset.id = id;
+  span.dataset.type = type;
+  span.innerText = cityName;
+  return span;
+}
