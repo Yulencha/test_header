@@ -72,6 +72,10 @@ function getListCity(arr) {
 
 let btnCityCont = document.querySelector(".pc-city-container");
 let cityBlock = document.querySelector(".pc-city-block");
+let citySelect = document.querySelector(".city-selected");
+let allCity = document.querySelector(".all-city-loaded");
+// let cityDelete = document.querySelector(".city-selected svg");
+let btnSaveCity = document.querySelector(".btn-save-city");
 
 btnCityCont.addEventListener("click", function () {
   cityBlock.classList.toggle("visible");
@@ -82,3 +86,33 @@ window.onclick = function (event) {
     cityBlock.classList.remove("visible");
   }
 };
+
+allCity.addEventListener("click", function (event) {
+  let element;
+  if (event.target.nodeName == "SPAN") {
+    element = event.target.parentNode;
+  } else {
+    element = event.target;
+  }
+
+  if (element.className.includes("all-city-loaded")) {
+    return;
+  }
+
+  if (element.className.includes("active")) {
+    citySelect.querySelector(`[data-id = '${element.dataset.id}']`).remove();
+  } else {
+    let div = document.createElement("div");
+    div.className = "city-select";
+    div.dataset.id = element.dataset.id;
+    div.dataset.type = element.dataset.type;
+
+    div.innerHTML =
+      element.firstChild.innerText +
+      '<svg><path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="#FFFFFF"></path></svg>';
+
+    citySelect.appendChild(div);
+  }
+
+  element.classList.toggle("active");
+});
