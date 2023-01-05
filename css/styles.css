@@ -91,7 +91,7 @@ a {
   height: 60px;
 }
 /* Display  ----------- */
-@media screen and (-webkit-min-device-pixel-ratio: 1) and ((min-width: 1082px)) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1082px) {
   .menu {
     display: none;
   }
@@ -391,7 +391,7 @@ a {
 }
 
 /* Mobile  ----------- */
-@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-width: 1081.999px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1) and (max-width: 1081.999px) {
   .mMenuBox {
     display: block;
   }
