@@ -38,65 +38,17 @@
                 class="city-search"
                 type="text"
                 placeholder="Регион, город, населенный пункт"
-              /><svg
-                class="city-search-clear"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z"
-                  fill="#A7A7A7"
-                ></path>
-              </svg>
+                oninput="citySearch()"
+              />
+              <img
+                src="./images/close_gray.svg"
+                class="city-search-clear do-not-close-city-menu"
+                alt="X"
+              />
             </div>
-            <div class="city-selected">
-              <!-- <div class="city-select" data-id="15" data-type="city">
-                Барнаул<svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z"
-                    fill="#FFFFFF"
-                  ></path>
-                </svg>
-              </div>
-              <div class="city-select" data-id="16" data-type="city">
-                Бийск<svg
-                  viewBox="0 0 14 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z"
-                    fill="#FFFFFF"
-                  ></path>
-                </svg>
-              </div> -->
-            </div>
+            <div class="city-selected"></div>
             <div class="all-city-container">
-              <div class="all-city-loaded" style="opacity: 1">
-                <!-- ДОЛЖНО БЫТЬ ТУТ -->
-                <!-- <div class="city-item" data-id="all" data-type="country">
-                  <span class="city-name">Россия</span>
-                </div>
-                <div class="city-item" data-id="24" data-type="area">
-                  <span class="city-name">Алтайский край</span>
-                </div>
-                <div class="city-item active" data-id="15" data-type="city">
-                  <span class="city-name">Барнаул</span
-                  ><span class="city-state">Алтайский край</span>
-                </div>
-                <div class="city-item" data-id="16" data-type="city">
-                  <span class="city-name">Бийск</span
-                  ><span class="city-state">Алтайский край</span>
-                </div> -->
-              </div>
+              <div class="all-city-loaded" style="opacity: 1"></div>
               <div class="apply-city-container">
                 <button class="btn-save-city" type="button">Сохранить</button>
               </div>

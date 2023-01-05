@@ -79,13 +79,17 @@ let citySelect = document.querySelector(".city-selected");
 let allCity = document.querySelector(".all-city-loaded");
 let btnSaveCity = document.querySelector(".btn-save-city");
 let cityNameHeader = document.querySelector(".city-name-header");
+let citySearchClear = document.querySelector(".city-search-clear");
 
 btnCityCont.addEventListener("click", function () {
   cityBlock.classList.toggle("visible");
 });
 
 window.onclick = function (event) {
-  if (event.target.className.includes("do-not-close-city-menu")) {
+  if (
+    event.target.className.includes != null &&
+    event.target.className.includes("do-not-close-city-menu")
+  ) {
     return;
   } else if (
     !cityBlock.contains(event.target) &&
@@ -148,28 +152,24 @@ btnSaveCity.addEventListener("click", function () {
   } else {
     cityNameHeader.textContent = arraySpanCity.join(", ");
   }
-  //  console.log(arraySpanCity);
 });
 
-{
-  /* 
-<div class="city-select" data-id="24" data-type="area">
-  Алтайский край
-  <div class="do-not-close-city-menu">
-    <img src="./images/close.svg" class="do-not-close-city-menu" alt="X">
-  </div>
-</div>
+function citySearch() {
+  let citySearchValue = document.querySelector(".city-search").value;
+  for (element of allCity.children) {
+    element.classList.remove("display-none");
+  }
 
-  <span data-type="area" data-id="24">
-    Алтайский край
-  </span> 
-*/
+  if (citySearchValue.length > 0) {
+    for (element of allCity.children) {
+      if (!element.firstChild.innerText.includes(citySearchValue)) {
+        element.classList.add("display-none");
+      }
+    }
+  }
 }
 
-function createCitySpan(cityName, type, id) {
-  let span = document.createElement("span");
-  span.dataset.id = id;
-  span.dataset.type = type;
-  span.innerText = cityName;
-  return span;
-}
+citySearchClear.onclick = function () {
+  document.querySelector(".city-search").value = "";
+  citySearch();
+};

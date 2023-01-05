@@ -15,7 +15,6 @@
   font-family: "OpenSans";
   src: local("OpenSans"), url("../fonts/OpenSans/OpenSans.ttf");
 }
-/* Medium */
 
 @font-face {
   font-family: "Formular";
@@ -27,8 +26,6 @@
   font-weight: 500;
   font-style: normal;
 }
-
-/* Bold */
 
 @font-face {
   font-family: "Formular";
@@ -63,25 +60,19 @@ body {
 }
 
 ul {
-  list-style: none; /*убираем маркеры списка*/
-  margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
-  padding-left: 0; /*убираем левый отступ, равный 40px*/
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
 }
 
 a {
-  text-decoration: none; /*убираем подчеркивание текста ссылок*/
+  text-decoration: none;
   pointer-events: none; /*!!!!!!!!!!!отключила ссылки на время разработки*/
 }
 
 .text-gray-hover:hover {
   color: var(--bs-gray-dark);
 }
-
-/* .custom-scrollbars * {
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  scrollbar-width: thin;
-  scrollbar-color: #999 #eee;
-} */
 
 /* W3C standard
    сейчас только для Firefox */
@@ -100,9 +91,6 @@ a {
   height: 60px;
 }
 
-/* Desktop  ----------- */
-/* @media only screen and ((min-width: 1350px)) {
-} */
 @media only screen and ((min-width: 1082px)) {
   .menu {
     display: none;
@@ -267,22 +255,6 @@ a {
     max-width: 15vw;
   }
 
-  /* .pc-city-container:active ~ .pc-city-block {
-    display: block;
-  } */
-  /* .pc-city-container:focus ~ .pc-city-block {
-    display: block;
-  } */
-
-  /* .pc-city-container:focus ~ .pc-city-block,
-  .pc-city-container:active ~ .pc-city-block,
-  .pc-city-block:hover {
-    display: block;
-  } */
-
-  /* .pc-city-container:checked ~ .pc-city-block {
-    display: block;
-  } */
   .city-search-block {
     position: relative;
     margin: 0 16px;
@@ -351,6 +323,7 @@ a {
     color: #767676;
     display: block;
   }
+
   .city-select img {
     position: absolute;
     right: 12px;
@@ -358,8 +331,15 @@ a {
     transform: translateY(-50%);
     cursor: pointer;
   }
+
+  .city-search-block img {
+    position: absolute;
+    right: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
   .city-search-clear {
-    /* display: none; */
     position: absolute;
     top: 50%;
     right: 17px;
@@ -519,8 +499,6 @@ a {
   .menuHightEd,
   .menuMiddleEd {
     display: none;
-    /* padding-left: 24px;
-    padding-right: 24px; */
   }
   .menuMiddleEd ul li,
   .menuHightEd ul li {
@@ -570,107 +548,55 @@ a {
   }
 
   .nav {
-    /*  ширна произвольная, не стесняйтесь экспериментировать */
     width: 290px;
     min-width: 290px;
-    /* фиксируем и выставляем высоту панели на максимум */
     height: 100%;
     position: fixed;
     top: 0;
     bottom: 0;
     margin: 0;
-    /* сдвигаем (прячем) панель относительно левого края страницы */
     left: -320px;
-    /* внутренние отступы */
-    /* padding: 24px 20px; */
-    /* плавный переход смещения панели */
     -webkit-transition: left 0.3s;
     -moz-transition: left 0.3s;
     transition: left 0.3s;
-    /* определяем цвет фона панели */
     background: var(--bs-white);
-    /* поверх других элементов */
     z-index: 2000;
     border-radius: 0 10px 10px 0;
     font-size: 14px;
     line-height: 20px;
   }
 
-  /**
- * Кнопка переключения панели
- * тег <label>
- */
-
   .nav-toggle {
-    /* абсолютно позиционируем */
     position: absolute;
-    /* относительно левого края панели */
     left: 320px;
-    /* отступ от верхнего края панели */
     top: 1em;
-    /* внутренние отступы */
     padding: 0.5em;
-    /* определяем цвет фона переключателя
-     * чаще вчего в соответствии с цветом фона панели
-    */
     background: inherit;
-    /* цвет текста */
     color: var(--bs-dark);
-    /* вид курсора */
     cursor: pointer;
-    /* размер шрифта */
     font-size: 1.2em;
     line-height: 1;
-    /* всегда поверх других элементов страницы */
     z-index: 2001;
-    /* анимируем цвет текста при наведении */
     -webkit-transition: color 0.25s ease-in-out;
     -moz-transition: color 0.25s ease-in-out;
     transition: color 0.25s ease-in-out;
   }
-
-  /* определяем текст кнопки 
- * символ Unicode (TRIGRAM FOR HEAVEN)
-*/
 
   .nav-toggle:after {
     content: "\2630";
     text-decoration: none;
   }
 
-  /* цвет текста при наведении */
-
-  /* .nav-toggle:hover {
-  color: red;
-} */
-
-  /**
- * Скрытый чекбокс (флажок)
- * невидим и недоступен :)
- * имя селектора атрибут флажка
- */
-
   [id="nav-toggle"] {
     position: absolute;
     display: none;
   }
-
-  /**
- * изменение положения переключателя 
- * при просмотре на мобильных устройствах
- * когда навигация раскрыта, распологаем внутри панели
-*/
 
   [id="nav-toggle"]:checked ~ .nav > .nav-toggle {
     left: auto;
     right: 10px;
     top: 10px;
   }
-
-  /**
- * Когда флажок установлен, открывается панель
- * используем псевдокласс:checked
- */
 
   [id="nav-toggle"]:checked ~ .nav {
     left: 0;
@@ -680,44 +606,15 @@ a {
     overflow-y: auto;
   }
 
-  /* 
- * смещение контента страницы
- * на размер ширины панели,
- * фишка необязательная, на любителя
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-*/
-
   [id="nav-toggle"]:checked ~ main > article {
     -webkit-transform: translateX(320px);
     -moz-transform: translateX(320px);
     transform: translateX(320px);
   }
 
-  /*
- * изменение символа переключателя,
- * привычный крестик (MULTIPLICATION X), 
- * вы можете испльзовать любой другой значок
-*/
-
   [id="nav-toggle"]:checked ~ .nav > .nav-toggle:after {
     content: "\2715";
   }
-
-  /**
- * профиксим баг в Android <= 4.1.2
- * см: http://timpietrusky.com/advanced-checkbox-hack
- */
-
-  /* body {
-    -webkit-animation: bugfix infinite 1s;
-  }
-
-  @-webkit-keyframes bugfix {
-    to {
-      padding: 0;
-    }
-  }
-  } */
 
   .mask-content {
     display: block;
@@ -747,6 +644,9 @@ a {
 }
 
 .visible {
-  /* display: block; */
   visibility: visible;
+}
+
+.display-none {
+  display: none;
 }
