@@ -312,6 +312,11 @@ a {
     cursor: pointer;
   }
 
+  .city-item mark {
+    color: #0656b4;
+    background: none;
+  }
+
   .city-item.active,
   .city-item:hover {
     background: #f1f1f1;

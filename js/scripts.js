@@ -44,10 +44,7 @@ function createCityNode(cityName, areaName, type, id) {
   return div;
 }
 
-function addNodeToDOM(element, className) {
-  let parentNode = document.querySelector(className);
-  parentNode.append(element);
-}
+let allCityLoad = [];
 
 function getListCity(arr) {
   arr.forEach((element) => {
@@ -56,7 +53,7 @@ function getListCity(arr) {
     let id = element.id;
     let cities = element.cities;
 
-    addNodeToDOM(createAreaNode(areaName, type, id), ".all-city-loaded");
+    allCityLoad.push(createAreaNode(areaName, type, id));
 
     if (Array.isArray(cities)) {
       cities.forEach((city) => {
@@ -64,13 +61,11 @@ function getListCity(arr) {
         let type = "city";
         let id = city.id;
 
-        addNodeToDOM(
-          createCityNode(cityName, areaName, type, id),
-          ".all-city-loaded"
-        );
+        allCityLoad.push(createCityNode(cityName, areaName, type, id));
       });
     }
   });
+  addNodesToDOM(allCityLoad, ".all-city-loaded");
 }
 
 let btnCityCont = document.querySelector(".pc-city-container");
@@ -156,16 +151,30 @@ btnSaveCity.addEventListener("click", function () {
 
 function citySearch() {
   let citySearchValue = document.querySelector(".city-search").value;
-  for (element of allCity.children) {
-    element.classList.remove("display-none");
-  }
+  let allCityFilter = [];
 
   if (citySearchValue.length > 0) {
-    for (element of allCity.children) {
-      if (!element.firstChild.innerText.includes(citySearchValue)) {
-        element.classList.add("display-none");
+    for (elem of allCityLoad) {
+      let element = elem.cloneNode(true);
+      let strTLC = element.firstChild.innerText.toLowerCase();
+      let str = element.firstChild.innerText;
+      let substr = citySearchValue.toLowerCase();
+      if (strTLC.includes(substr)) {
+        substr = substr.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        let re = new RegExp(substr, "ig");
+
+        if (substr.length > 0) {
+          element.firstChild.innerHTML = str.replace(re, `<mark>$&</mark>`);
+        } else {
+          element.firstChild.innerHTML = str;
+        }
+
+        allCityFilter.push(element);
       }
     }
+    addNodesToDOM(allCityFilter, ".all-city-loaded");
+  } else {
+    addNodesToDOM(allCityLoad, ".all-city-loaded");
   }
 }
 
@@ -173,3 +182,8 @@ citySearchClear.onclick = function () {
   document.querySelector(".city-search").value = "";
   citySearch();
 };
+
+function addNodesToDOM(element, className) {
+  let parentNode = document.querySelector(className);
+  parentNode.replaceChildren(...element);
+}
