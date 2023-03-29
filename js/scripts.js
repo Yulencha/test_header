@@ -12,6 +12,7 @@ fetch("https://studika.ru/api/areas", {
   .then((data) => getListCity(data))
   .catch((error) => {
     console.log(`Не удалость выполнить запрос и загрузить список городов`);
+    getListCity(CityList);
   });
 
 function createAreaNode(areaName, type, id) {

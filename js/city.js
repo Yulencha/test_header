@@ -1,4 +1,4 @@
-const city = [
+const CityList = [
   {
     name: "Россия",
     type: "country",
